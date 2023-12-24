@@ -1,13 +1,13 @@
-import io
-import os
+import io, os
 from tkinter import Image
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 import tensorflow as tf
-from tensorflow import keras
 import numpy as np
 
+from tensorflow import keras
 from flask import Flask, request, jsonify
+
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 model = keras.models.load_model("my_model.h5")
 

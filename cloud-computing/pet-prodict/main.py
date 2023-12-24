@@ -1,11 +1,11 @@
 from flask import Flask, request, jsonify
 from tensorflow import keras
 from tensorflow.keras.preprocessing import image
-import numpy as np
-import os
-import io
-import requests
 from PIL import Image
+
+import numpy as np
+import os, io
+import requests
 
 app = Flask(__name__)
 
@@ -13,17 +13,9 @@ PPREDIC_MODEL_ENDPOINT = 'https://home4paws02-tjop4lptbq-et.a.run.app/v1/models/
 SHELTER_DATASET_ENDPOINT = "https://storage.googleapis.com/dataset_c23-pr468/nama_shelter_lengkap.json"
 
 CAT_MODEL_ENDPOINT = keras.models.load_model("cat_breed_model_v2.h5")
-# cat_response = requests.get("https://storage.googleapis.com/dataset_c23-pr468/cat_breed_model_v2.h5")
-# cat_model_bytes = io.BytesIO(cat_response.content)
-# CAT_MODEL_ENDPOINT = keras.models.load_model(cat_model_bytes)
-# CAT_MODEL_ENDPOINT = "https://catbreed-tjop4lptbq-et.a.run.app"
 CAT_DATASET_ENDPOINT = "https://storage.googleapis.com/dataset_c23-pr468/cat_breed_label_map.json"
 
 DOG_MODEL_ENDPOINT = keras.models.load_model("dog_breed_model_v2.h5")
-# dog_response = requests.get("https://storage.googleapis.com/dataset_c23-pr468/dog_breed_model_v2.h5")
-# dog_model_bytes = io.BytesIO(dog_response.content)
-# DOG_MODEL_ENDPOINT = keras.models.load_model(dog_model_bytes)
-# DOG_MODEL_ENDPOINT = "https://dogbreed-tjop4lptbq-et.a.run.app"
 DOG_DATASET_ENDPOINT = "https://storage.googleapis.com/dataset_c23-pr468/dog_breed_label_map.json"
 
 def load_image(image_bytes):
